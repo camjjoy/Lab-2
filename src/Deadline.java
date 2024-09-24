@@ -1,10 +1,10 @@
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Deadline extends Event implements Completable
 {
     private boolean complete;
 
-    public Deadline(String name, Date dateTime) //constructor
+    public Deadline(String name, LocalDateTime dateTime) //constructor
     {
         super(name, dateTime);
     }

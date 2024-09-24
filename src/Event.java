@@ -1,11 +1,11 @@
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public abstract class Event implements Comparable<Event>
 {
     private String name; //name of the event
-    private Date dateTime; //time and date the event starts
+    private LocalDateTime dateTime; //time and date the event starts
 
-    public Event(String name, Date dateTime) {// Constructor
+    public Event(String name, LocalDateTime dateTime) {// Constructor
         this.name = name;
         this.dateTime = dateTime;
     }
@@ -15,12 +15,12 @@ public abstract class Event implements Comparable<Event>
         return this.name;
     }
 
-    public Date getDateTime() //returns dateTime
+    public LocalDateTime getDateTime() //returns dateTime
     {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) //sets the dateTime
+    public void setDateTime(LocalDateTime dateTime) //sets the dateTime
     {
         this.dateTime = dateTime;
     }
