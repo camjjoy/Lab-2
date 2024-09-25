@@ -42,8 +42,8 @@ public class EventListPanel extends JPanel {
         filterDisplayMeetings.addActionListener(_ -> filterEvents());
         controlPanel.add(filterDisplayMeetings);
 
-        // Add event button
-        // Button to open AddEvent Modal
+
+        // add button to open AddEvent Modal
         JButton addEventButton = new JButton("Add Event");
         addEventButton.addActionListener(_ -> openAddEventModal());
         controlPanel.add(addEventButton);
@@ -52,7 +52,7 @@ public class EventListPanel extends JPanel {
         add(displayPanel, BorderLayout.CENTER);
     }
 
-    // Sort events based on selected criteria
+    // sort events
     private void sortEvents() {
         String sortOption = (String) sortDropDown.getSelectedItem();
         switch (sortOption) {
@@ -72,7 +72,7 @@ public class EventListPanel extends JPanel {
             default:
                 throw new IllegalStateException(STR."Unexpected value: \{sortOption}");
         }
-        updateDisplayPanel();
+        updateDisplayPanel(); //update panel
     }
 
     // filter
@@ -90,7 +90,7 @@ public class EventListPanel extends JPanel {
                         !filterDisplayMeetings.isSelected())
                 .collect(Collectors.toList());
 
-        updateDisplayPanel(filteredEvents);
+        updateDisplayPanel(filteredEvents); //update panel
     }
 
 

@@ -21,12 +21,12 @@ public static void main(String[] args)
 
 public static void addDefaultEvents(EventListPanel eventListPanel)
 {
-    // Create default events
+    // default events
     Deadline deadline = new Deadline("Lab 2 Due", LocalDateTime.of(2024, 9, 25, 2, 59));
     Meeting meeting = new Meeting("Software Development Class", LocalDateTime.of(2024, 9, 25, 3, 0),
             LocalDateTime.of(2024, 9, 25, 4, 0), "CSCI 339");
 
-    // Add events to the event list panel
+    // add events to panel
     eventListPanel.addEvent(deadline);
     eventListPanel.addEvent(meeting);
 }
