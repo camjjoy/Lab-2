@@ -9,7 +9,10 @@ public class EventListPanel extends JPanel {
     private final ArrayList<Event> events; // List of events
     private final JPanel displayPanel; // Holds EventPanels corresponding to events
     private final JComboBox<String> sortDropDown; // Dropdown for sorting events
-    private final JCheckBox filterDisplayCompleted; // Checkbox to filter completed events
+    //private final JCheckBox filterDisplayCompleted; // Checkbox to filter completed events
+    private final JCheckBox filterDisplayCompleted; // To filter completed tasks
+    private JCheckBox filterDisplayDeadlines; // To filter deadlines
+    private JCheckBox filterDisplayMeetings; // To filter meetings
 
     public EventListPanel() {
         events = new ArrayList<>();
@@ -24,10 +27,20 @@ public class EventListPanel extends JPanel {
         sortDropDown.addActionListener(e -> sortEvents());
         controlPanel.add(sortDropDown);
 
-        // Filter checkbox for completed events
+        // filter completed events
         filterDisplayCompleted = new JCheckBox("Show Incomplete Tasks");
         filterDisplayCompleted.addActionListener(e -> filterEvents());
         controlPanel.add(filterDisplayCompleted);
+
+        // filter deadlines
+        filterDisplayDeadlines = new JCheckBox("Show Non-Deadlines");
+        filterDisplayDeadlines.addActionListener(e -> filterEvents());
+        controlPanel.add(filterDisplayDeadlines);
+
+        // filter meetings
+        filterDisplayMeetings = new JCheckBox("Show Non-Meetings");
+        filterDisplayMeetings.addActionListener(e -> filterEvents());
+        controlPanel.add(filterDisplayMeetings);
 
         // Add event button
         // Button to open AddEvent Modal
@@ -43,16 +56,16 @@ public class EventListPanel extends JPanel {
     private void sortEvents() {
         String sortOption = (String) sortDropDown.getSelectedItem();
         switch (sortOption) {
-            case "Sort by Name":
+            case "Sort by name":
                 events.sort(Comparator.comparing(Event::getName));
                 break;
-            case "Sort by Date":
+            case "Sort by dateTime":
                 events.sort(Comparator.comparing(Event::getDateTime));
                 break;
-            case "Reverse Name":
+            case "Sort by reverseName":
                 events.sort(Comparator.comparing(Event::getName).reversed());
                 break;
-            case "Reverse Date":
+            case "Sort by reverseDate":
                 events.sort(Comparator.comparing(Event::getDateTime).reversed());
             case null:
                 break;
@@ -65,9 +78,16 @@ public class EventListPanel extends JPanel {
     // filter
     private void filterEvents() {
         List<Event> filteredEvents = events.stream()
+                // filter completed
                 .filter(event -> !(event instanceof Completable) ||
                         !filterDisplayCompleted.isSelected() ||
                         !((Completable) event).isComplete())
+                // filter deadlines
+                .filter(event -> !(event instanceof Deadline) ||
+                        !filterDisplayDeadlines.isSelected())
+                // filter meetings
+                .filter(event -> !(event instanceof Meeting) ||
+                        !filterDisplayMeetings.isSelected())
                 .collect(Collectors.toList());
 
         updateDisplayPanel(filteredEvents);
