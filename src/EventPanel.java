@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.time.format.DateTimeFormatter;
 
 public class EventPanel extends JPanel
 {

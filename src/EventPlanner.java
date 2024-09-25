@@ -23,9 +23,9 @@ public class EventPlanner
     public static void addDefaultEvents(EventListPanel eventListPanel)
     {
         // Create default events
-        Deadline deadline = new Deadline("Project Submission", LocalDateTime.of(2024, 10, 1, 23, 59));
-        Meeting meeting = new Meeting("Team Meeting", LocalDateTime.of(2024, 9, 30, 10, 0),
-                LocalDateTime.of(2024, 9, 30, 11, 0), "Conference Room");
+        Deadline deadline = new Deadline("Lab 2 Due", LocalDateTime.of(2024, 9, 25, 2, 59));
+        Meeting meeting = new Meeting("Software Development Class", LocalDateTime.of(2024, 9, 25, 3, 0),
+                LocalDateTime.of(2024, 9, 25, 4, 0), "CSCI 339");
 
         // Add events to the event list panel
         eventListPanel.addEvent(deadline);
