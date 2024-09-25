@@ -59,18 +59,18 @@ public class EventListPanel extends JPanel {
             case "Sort by name":
                 events.sort(Comparator.comparing(Event::getName));
                 break;
-            case "Sort by dateTime":
+            case "Sort by Date":
                 events.sort(Comparator.comparing(Event::getDateTime));
                 break;
-            case "Sort by reverseName":
+            case "Reverse Name":
                 events.sort(Comparator.comparing(Event::getName).reversed());
                 break;
-            case "Sort by reverseDate":
+            case "Reverse Date":
                 events.sort(Comparator.comparing(Event::getDateTime).reversed());
             case null:
                 break;
             default:
-                throw new IllegalStateException(STR."Unexpected value: \{sortOption}");
+                throw new IllegalStateException("Unexpected value: " + sortOption);
         }
         updateDisplayPanel(); //update panel
     }
