@@ -56,7 +56,7 @@ public class EventListPanel extends JPanel {
     private void sortEvents() {
         String sortOption = (String) sortDropDown.getSelectedItem();
         switch (sortOption) {
-            case "Sort by name":
+            case "Sort by Name":
                 events.sort(Comparator.comparing(Event::getName));
                 break;
             case "Sort by Date":
