@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -42,12 +40,7 @@ public class AddEventModal extends JDialog {
 
         // add the event button
         JButton addButton = new JButton("Add Event");
-        addButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                addEvent();
-            }
-        });
+        addButton.addActionListener(_ -> addEvent());
         add(addButton);
     }
 

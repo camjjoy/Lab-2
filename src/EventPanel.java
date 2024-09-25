@@ -2,8 +2,7 @@ import javax.swing.*;
 
 public class EventPanel extends JPanel
 {
-    private Event event; //the event that this panel displays
-    private JButton completeButton; //button that completes event
+    private final Event event; //the event that this panel displays
 
     public EventPanel(Event event) //creates EventPanel for this.event
     {
@@ -30,8 +29,9 @@ public class EventPanel extends JPanel
             JLabel completionLabel = new JLabel("Complete: " + completable.isComplete());
             add(completionLabel); //add completion status of event
 
-            completeButton = new JButton("Complete");
-            completeButton.addActionListener(e -> {
+            //button that completes event
+            JButton completeButton = new JButton("Complete");
+            completeButton.addActionListener(_ -> {
                 completable.complete();
                 setCompletionStatus(completionLabel);
             });

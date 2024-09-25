@@ -11,8 +11,8 @@ public class EventListPanel extends JPanel {
     private final JComboBox<String> sortDropDown; // Dropdown for sorting events
     //private final JCheckBox filterDisplayCompleted; // Checkbox to filter completed events
     private final JCheckBox filterDisplayCompleted; // To filter completed tasks
-    private JCheckBox filterDisplayDeadlines; // To filter deadlines
-    private JCheckBox filterDisplayMeetings; // To filter meetings
+    private final JCheckBox filterDisplayDeadlines; // To filter deadlines
+    private final JCheckBox filterDisplayMeetings; // To filter meetings
 
     public EventListPanel() {
         events = new ArrayList<>();
@@ -24,28 +24,28 @@ public class EventListPanel extends JPanel {
 
         // Sort dropdown
         sortDropDown = new JComboBox<>(new String[]{"Sort by Name", "Sort by Date", "Reverse Name" ,"Reverse Date"});
-        sortDropDown.addActionListener(e -> sortEvents());
+        sortDropDown.addActionListener(_ -> sortEvents());
         controlPanel.add(sortDropDown);
 
         // filter completed events
         filterDisplayCompleted = new JCheckBox("Show Incomplete Tasks");
-        filterDisplayCompleted.addActionListener(e -> filterEvents());
+        filterDisplayCompleted.addActionListener(_ -> filterEvents());
         controlPanel.add(filterDisplayCompleted);
 
         // filter deadlines
         filterDisplayDeadlines = new JCheckBox("Show Non-Deadlines");
-        filterDisplayDeadlines.addActionListener(e -> filterEvents());
+        filterDisplayDeadlines.addActionListener(_ -> filterEvents());
         controlPanel.add(filterDisplayDeadlines);
 
         // filter meetings
         filterDisplayMeetings = new JCheckBox("Show Non-Meetings");
-        filterDisplayMeetings.addActionListener(e -> filterEvents());
+        filterDisplayMeetings.addActionListener(_ -> filterEvents());
         controlPanel.add(filterDisplayMeetings);
 
         // Add event button
         // Button to open AddEvent Modal
         JButton addEventButton = new JButton("Add Event");
-        addEventButton.addActionListener(e -> openAddEventModal());
+        addEventButton.addActionListener(_ -> openAddEventModal());
         controlPanel.add(addEventButton);
 
         add(controlPanel, BorderLayout.NORTH);
